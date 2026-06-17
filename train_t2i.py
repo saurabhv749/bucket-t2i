@@ -763,7 +763,7 @@ def main():
         caption_column=args.caption_column,
         )
     # DataLoaders creation:
-    train_dataloader, sampler = build_dataloader(ar_bucket_ds, batch_size=4, num_workers=2)
+    train_dataloader, sampler = build_dataloader(ar_bucket_ds, batch_size=args.train_batch_size, num_workers=2)
 
     # Scheduler and math around the number of training steps.
     # Check the PR https://github.com/huggingface/diffusers/pull/8312 for detailed explanation.
