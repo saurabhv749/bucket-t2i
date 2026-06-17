@@ -173,7 +173,12 @@ def log_validation(vae, text_encoder, tokenizer, unet, args, accelerator, weight
             autocast_ctx = torch.autocast(accelerator.device.type)
 
         with autocast_ctx:
-            image = pipeline(args.validation_prompts[i], num_inference_steps=20, generator=generator).images[0]
+            image = pipeline(args.validation_prompts[i],
+                             width=args.val_image_width,
+                             height=args.val_image_height, 
+                             num_inference_steps=20,
+                             generator=generator
+                             ).images[0]
 
         images.append(image)
 
@@ -276,6 +281,18 @@ def parse_args():
         type=int,
         default=256*256,
         help="Maximum pixel area for generating image buckets.",
+    )
+    parser.add_argument(
+        "--val_image_width",
+        type=int,
+        default=192,
+        help="Validation image width",
+    )
+    parser.add_argument(
+        "--val_image_height",
+        type=int,
+        default=320,
+        help="Validation image height.",
     )
     # 
     parser.add_argument(

@@ -110,11 +110,11 @@ def build_transform(bucket_w: int, bucket_h: int) -> transforms.Compose:
       3. Normalise to [-1, 1]  (standard for diffusion models)
     """
     return transforms.Compose([
-        transforms.Resize(
-            # Resize shorter side to max(W, H) so crop never up-samples.
-            max(bucket_w, bucket_h),
-            interpolation=transforms.InterpolationMode.LANCZOS,
-        ),
+        # transforms.Resize(
+        #     # Resize shorter side to max(W, H) so crop never up-samples.
+        #     max(bucket_w, bucket_h),
+        #     interpolation=transforms.InterpolationMode.LANCZOS,
+        # ),
         transforms.CenterCrop((bucket_h, bucket_w)),   # (H, W) order for PIL
         transforms.ToTensor(),
         transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5]),
