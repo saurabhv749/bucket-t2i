@@ -757,7 +757,7 @@ def main():
     ar_bucket_ds = from_hub(
         dataset_name=args.dataset_name,
         tokenizer=tokenizer,
-        max_len=tokenizer.model_max_length,
+        text_tokens_max_length=tokenizer.model_max_length,
         buckets=buckets,
         image_column=args.image_column,
         caption_column=args.caption_column,
