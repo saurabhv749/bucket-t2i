@@ -1069,6 +1069,7 @@ def main():
             text_encoder=text_encoder,
             vae=vae,
             unet=unet,
+            safety_checker=None,
             revision=args.revision,
             variant=args.variant,
         )
